@@ -1,0 +1,4 @@
+interface:
+  display_name: "阿囤囤小红书封面"
+  short_description: "生成阿囤囤风格封面提示词，支持质检和多比例扩展"
+  default_prompt: "Use $atutun-xhs-cover to create and QA a high-click Xiaohongshu cover prompt."
