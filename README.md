@@ -1,6 +1,6 @@
 # atutun-xhs-cover-v2
 
-阿囤囤风格小红书封面提示词生成 Codex Skill v2。
+阿囤囤风格小红书封面提示词生成工作流说明，既可以作为 Codex Skill 使用，也可以作为其他 agent 的系统提示词、项目指令或可复用 prompt 使用。
 
 这个 Skill 用于把文章、脚本、选题、产品测评、AI 工具教程、效率方法、播客推荐、个人经验等内容，整理成可直接交给图片生成模型使用的小红书封面提示词。v2 版的核心变化是把收集流程收敛为 5 个必要问题：人物、辅助素材、标题、封面风格、标题用色偏好；其余视觉细节由模型根据内容自动具体化。
 
@@ -23,10 +23,12 @@ atutun-xhs-cover/
     openai.yaml
 ```
 
-- `SKILL.md`：Skill 主体说明、五问流程、出图复核流程和 8 种封面风格模板。
-- `agents/openai.yaml`：OpenAI/Codex 侧的展示名、简介和默认调用提示。
+- `SKILL.md`：通用 agent 指令主体，包含五问流程、出图复核流程和 8 种封面风格模板。
+- `agents/openai.yaml`：OpenAI/Codex 侧的展示名、简介和默认调用提示；其他 agent 不依赖这个文件。
 
-## 安装方式
+## 使用方式
+
+### 在 Codex 中使用
 
 把仓库中的 `atutun-xhs-cover` 目录复制到 Codex skills 目录：
 
@@ -45,6 +47,12 @@ $atutun-xhs-cover
 ```text
 用 atutun-xhs-cover 帮我生成一张 AI 工具测评小红书封面提示词。
 ```
+
+### 在其他 agent 中使用
+
+把 `atutun-xhs-cover/SKILL.md` 的内容作为系统提示词、项目指令、agent profile、workflow prompt 或知识库指令导入即可。核心要求是让 agent 遵守 `SKILL.md` 中的五问流程和最终提示词复核规则。
+
+如果目标 agent 支持文件型工具/技能，可以保留目录结构；如果只支持纯文本 prompt，直接复制 `SKILL.md` 正文也可以。
 
 ## v2 使用流程
 
@@ -86,4 +94,4 @@ Skill 会按顺序提问，并且一次只问一个问题：
 
 ## 仓库可见性
 
-这个仓库是公开仓库，用于分享和复用 Codex Skill。当前发布内容仅包含 Skill 本体和 OpenAI agent 配置，不包含本地演示素材或个人文件。
+这个仓库是公开仓库，用于分享和复用这份 agent 工作流说明。当前发布内容仅包含 Skill 本体和 OpenAI agent 配置，不包含本地演示素材或个人文件。
